@@ -20,12 +20,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../src/dist/css/adminlte.min.css">
    <!-- Custom styles for this page -->
-   <link href="../src/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="../src/vendor/jquery/jquery.min.js"></script>
+   <link href="../src/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script src="../src/jquery/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 </head>
