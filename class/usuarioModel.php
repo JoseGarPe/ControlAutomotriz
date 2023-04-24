@@ -101,7 +101,7 @@ public function update()
   //-----------------------------------------------------------------------------------------//
   public function selectALL()
   {
-      $query="SELECT u.* FROM usuario u ORDER BY name DESC";
+      $query="SELECT u.*,tu.name as tipoUsuario FROM usuario u LEFT JOIN tipo_usuario tu on u.id_tipo_usuario = tu.id ORDER BY name DESC";
       $selectall=$this->db->query($query);
       $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
       $informacion=array();

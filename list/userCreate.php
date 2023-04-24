@@ -20,7 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../src/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../src/dist/css/adminlte.min.css">
    <!-- Custom styles for this page -->
@@ -89,8 +89,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img src="../src/img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Control Automotriz</span>
     </a>
 
     <!-- Sidebar -->
@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../src/img/user.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">User Login</a>
@@ -156,12 +156,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="card-body">
                 <h6 class="card-title">Registros de Usuarios</h6>
-                
-                <div class="row">
+                <br/>
                     <div class="form-group">
                       <button type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
                     </div>
-                  <table class="users" id="tableUsers">
+                  <table class="users table table-striped" id="tableUsers">
                     <thead>
                       <th>Nombre</th>
                       <th>User</th>
@@ -180,7 +179,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   ?>
                     </tbody>
                   </table>
-                </div>
 
               </div>
             </div>
@@ -234,11 +232,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../src/plugins/jquery/jquery.min.js"></script>
+<!--script src="../src/plugins/jquery/jquery.min.js"></script-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../src/dist/js/adminlte.min.js"></script>
+<script src="../src/dist/js/adminlte.min.js"></script>
 
 <script>
  $(document).ready(function(){  
