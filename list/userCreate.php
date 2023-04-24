@@ -20,9 +20,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../src/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../src/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
    <!-- Custom styles for this page -->
    <link href="../src/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="../src/jquery/jquery.min.js"></script>
@@ -131,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <h1 class="m-0"></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -147,21 +148,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
           <!-- /.col-md-6 -->
-          <div class="col-lg-12">
-            <div class="card card-primary card-outline">
+            <div class="card card-primary ">
               <div class="card-header">
-                <h5 class="m-0">Usuarios</h5>
+                <h5>Usuarios</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Registros de Usuarios</h6>
-                
+                <h6 class="card-title">Registros de Usuarios</h6><br/>
                 <div class="row">
                     <div class="form-group">
                       <button type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
                     </div>
-                  <table class="users" id="tableUsers">
+                </div>
+                <div class="row">
+                  <div class="col-lg">
+                  <table class="users table table-striped" id="tableUsers">
                     <thead>
                       <th>Nombre</th>
                       <th>User</th>
@@ -180,13 +181,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   ?>
                     </tbody>
                   </table>
+                  </div>
                 </div>
 
               </div>
             </div>
-          </div>
           <!-- /.col-md-6 -->
-        </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -234,11 +234,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../src/plugins/jquery/jquery.min.js"></script>
+<!--script src="../src/plugins/jquery/jquery.min.js"></script-->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../src/dist/js/adminlte.min.js"></script>
+<script src="../src/dist/js/adminlte.min.js"></script>
 
 <script>
  $(document).ready(function(){  
