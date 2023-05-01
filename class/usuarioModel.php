@@ -123,6 +123,13 @@ public function update()
       $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
       return $Listuser;
   }
+  public function selectTipoUsuario()
+  {
+      $query="SELECT * FROM tipo_usuario";
+      $selectall=$this->db->query($query);
+      $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
+      return $Listuser;
+  }
   
 //-------------------------------------------------------------------------------------//
 
