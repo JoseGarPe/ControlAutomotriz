@@ -53,14 +53,21 @@ public function setPass($pass) {
     $this->pass = $password;
 }
 
+public function getId_tipo_usuario() {
+    return $this->id_tipo_usuario;
+}
+
+public function setId_tipo_usuario($id_tipo_usuario) {
+    $this->id_tipo_usuario = $id_tipo_usuario;
+}
 
 
 //------------------------------------ FUNCIONES --------------------------------------//
 
 public function save()
 {
-      $query="INSERT INTO user (id,user,pass)
-                  values(NULL,'".$this->user."','".$this->pass."');";
+      $query="INSERT INTO user (id,user,pass,id_tipo_usuario)
+                  values(NULL,'".$this->user."','".$this->pass."',".$this->id_tipo_usuario.");";
           $save=$this->db->query($query);
           if ($save==true) {
               return true;

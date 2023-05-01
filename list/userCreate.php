@@ -157,7 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h6 class="card-title">Registros de Usuarios</h6><br/>
                 <div class="row">
                     <div class="form-group">
-                      <button type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
+                      <button type="button" class="btn btn-success mr-2 insert_data"> + Agregar Usuario</button>
                     </div>
                 </div>
                 <div class="row">
