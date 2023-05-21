@@ -66,8 +66,8 @@ public function setId_tipo_usuario($id_tipo_usuario) {
 
 public function save()
 {
-      $query="INSERT INTO user (id,user,pass,id_tipo_usuario)
-                  values(NULL,'".$this->user."','".$this->pass."',".$this->id_tipo_usuario.");";
+      $query="INSERT INTO usuario (id,name,user,pass,id_tipo_usuario)
+                  values(NULL,'".$this->name."','".$this->user."','".$this->pass."',".$this->id_tipo_usuario.");";
           $save=$this->db->query($query);
           if ($save==true) {
               return true;

@@ -1,14 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Agregar Usuarios</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+
          <form method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nombre</label>
@@ -30,8 +21,8 @@
                 <label for="exampleInputPassword1">Tipo de usuario</label>
                 <select name="id_tipo_usuario" id="id_tipo_usuario" class="form-control">
                   <?php 
-                     require_once "../class/usuarioModel.php";
-                     $NivelA = new Usuario();
+                     require_once "../../class/usuarioModel.php";
+                     $NivelA = new User();
                      $ListUsua = $NivelA->selectTipoUsuario();
                      foreach ((array)$ListUsua as $row) {
                       echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
@@ -40,16 +31,10 @@
                 </select>
                 </div>
             
+            <div class="form-group">
+               <button type="button" id="guardar" class="btn btn-success">Guardar</button>  
+            </div>
         </form>
-            
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="buttom" id="guardar" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <script>
@@ -62,8 +47,8 @@ document.getElementById('guardar').addEventListener('click', enviarInformacion);
                         var id_tipo_usuario=document.getElementById('id_tipo_usuario').value;
 
                         var formData = new FormData();
-                        formData.append('nombre', nombre);
-                        formData.append('usuario', usuario);
+                        formData.append('name', nombre);
+                        formData.append('user', usuario);
                         formData.append('pass', pass);
                         formData.append('id_tipo_usuario', id_tipo_usuario);
                         var xhr = new XMLHttpRequest();
@@ -88,7 +73,7 @@ document.getElementById('guardar').addEventListener('click', enviarInformacion);
                           EN ESTE CASO EL CLIENTE Y EL ID
                         */
                         //xhr.open("POST", "https://pruebafiado.000webhostapp.com/sitioWeb/php/controladores/variablesSesiones.php", true);
-                        xhr.open("POST", `https://${server}/controllers/userController.php?accion=guardar`, true);
+                        xhr.open("POST", `http://${server}/ControlAutomotriz/controllers/userController.php?accion=guardar`, true);
                         xhr.send(formData);
                       }
                        

@@ -31,7 +31,7 @@ if ($accion=='guardar') {
     }
     $estado=1;
     
-    $usua = new Usuario();
+    $usua = new User();
     $usua->setName($name);
     $usua->setUser($user);
     $usua->setPass($pass);
@@ -39,13 +39,13 @@ if ($accion=='guardar') {
     //$usua->setDescripcion($descripcion);
     $save =$usua->save();
    
-       if ($save==TRUE) {
+       if ($save==true) {
            
         $informacion = [
             "tittle" => "Correcto",
-            "text" => "Gracias! ".$_POST['name'].' te has registrado con exito, en los próximos días nos pondremos en contacto contigo!',
+            "text" => "Usuario ".$_POST['name'].' ha sido registrado con exito',
             "type" => "success",
-            "url" => "index.php"
+            "url" => "userCreate.php"
             ];
             echo json_encode($informacion);
        }else{
@@ -59,7 +59,7 @@ if ($accion=='guardar') {
            }else{
                $informacion = [
                "tittle" => "Error",
-               "text" => "No fue posible Eliminar el usuario, por favor verifique los datos y vuelva a intentarlo",
+               "text" => "MESSAGE::".$_SESSION['cantidad'],
                "type" => "error",
              ];
                

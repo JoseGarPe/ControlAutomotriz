@@ -26,6 +26,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
    <!-- Custom styles for this page -->
    <link href="../src/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  
+  <link href="../src/css/sweetalert2.css" rel="stylesheet" />
   <script src="../src/jquery/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
@@ -214,7 +216,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
-<div id="dataModal3" class="modal fade">  
+<div id="dataModal3" class="modal">  
                                   <div class="modal-dialog">  
                                        <div class="modal-content">  
                                             <div class="modal-header">  
@@ -233,11 +235,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- jQuery -->
 <!--script src="../src/plugins/jquery/jquery.min.js"></script-->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../src/dist/js/adminlte.min.js"></script>
+   <script src="../src/dist/js/sweetalert2.min.js"></script>
+   <script src="../src/dist/js/sweetAlert2.js"></script>
 
 <script>
  $(document).ready(function(){  
@@ -253,9 +257,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $(document).on('click', '.insert_data', function(){  
           //var id_pedido = $(this).attr("id_pedido");  
                 $.ajax({  
-                     url:"../views/Users/userCreate.php",  
+                     url:"../views/users/userCreate.php",  
                      method:"POST",  
-                     data:{id_pedido:id_pedido},  
+                     data:{},  
                      success:function(data){  
                           $('#employee_forms3').html(data);  
                           $('#dataModal3').modal('show');  
