@@ -2,7 +2,7 @@
 <?php
 
 //--------------------------------------------//
-$label='';
+
 require_once "../class/clienteModel.php";
 $usuario = new Cliente();
 ?>
