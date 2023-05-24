@@ -5,7 +5,6 @@
 $label='';
 require_once "../class/clienteModel.php";
 $usuario = new Cliente();
-$listUsua = $usuario->selectALL();
 ?>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -165,22 +164,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="col-lg">
                   <table class="users table table-striped" id="tableUsers">
                     <thead>
+                      <th>ID</th>
                       <th>Nombre</th>
                       <th>Telefono</th>
                       <th>Tel. Fijo</th>
                       <th>Correo</th>
                       <th>Dirección</th>
+                      <th>Acciones</th>
                     </thead>
                     <tbody>
                                   <?php 
                                     $listUsua = $usuario->selectALL();
                                     foreach($listUsua['listUser'] as $dataCliente){
                                       echo "<tr>";
+                                      echo "<td>".$dataCliente['id']."</td>";
                                       echo "<td>".$dataCliente['name']."</td>";
                                       echo "<td>".$dataCliente['telefono']."</td>";
                                       echo "<td>".$dataCliente['tel_fijo']."</td>";
                                       echo "<td>".$dataCliente['correo']."</td>";
                                       echo "<td>".$dataCliente['direccion']."</td>";
+                                      echo "<td><a href='https://localhost/ControlAutomotriz/views/Contactos/updateContact.php?id=".$dataCliente['id']."' class='btn btn-warning'>Editar</a></td>";
                                       echo "</tr>";
                                     }
                                   ?>
@@ -256,7 +259,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   //cargarFecha();
   //setInterval(function(){ cargarHora(); }, 1000);  //------------------------------------------------------------// 
         //------------------------------------------------------//
-        $(document).on('click', '.insert_data', function(){  
+        $(document).on('click', '.updata_contacto', function(){  
           //var id_pedido = $(this).attr("id_pedido");  
                 $.ajax({  
                      url:"../views/Contactos/contactCreate.php",  
@@ -268,49 +271,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                      }  
                 });  
         }); 
-      $(document).on('click', '.alert_data', function(){  
-          var id_pedido = $(this).attr("id_pedido");  
-           if(id_pedido != '')  
-           {  
-                $.ajax({  
-                     url:"../views/Lesa/alerta.php",  
-                     method:"POST",  
-                     data:{id_pedido:id_pedido},  
-                     success:function(data){  
-                          $('#employee_forms3').html(data);  
-                          $('#dataModal3').modal('show');  
-                     }  
-                });  
-           }   
-      }); 
-        //------------------------------------------------------//
-        $(document).on('click', '.eliminarData', function(){
-                console.log('Obteniendo datos...');
-          var id_asignacion = $(this).attr("id_asignacion");  
-          var id_pedido = $(this).attr("id_pedido");  
-
-                 console.log('enviando...');
-                      $.ajax({  
-                          url:"../controller/asignacionController.php?accion=eliminar",  
-                          method:"POST",  
-                          data:{id_asignacion:id_asignacion,id_pedido:id_pedido},  
-                          success:function(data){ 
-                            var array = JSON.parse(data);
-                              if (array.type == "success") {
-                                  alertaEspecial(array.tittle, "<h4>" + array.text + "</h4>", array.type,array.url);
-                              } else {
-                                  alerta(array.tittle, "<h4>" + array.text + "</h4>", array.type);
-                              }
-                            console.log(data);
-                          }
-                      });  
-              
-                }); 
 
     });
- 
-    
-    
 </script>
 </body>
 </html>

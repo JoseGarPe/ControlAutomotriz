@@ -198,7 +198,7 @@ public function update()
   //-----------------------------------------------------------------------------------------//
   public function selectALL()
   {
-      $query="SELECT u.* FROM contacto u ORDER BY name DESC";
+      $query="SELECT u.* FROM contacto u ORDER BY name ASC";
       $selectall=$this->db->query($query);
       $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
       $informacion=array();
@@ -208,7 +208,7 @@ public function update()
   }
   public function selectOne($codigo)
   {
-      $query="SELECT * FROM user WHERE id_usaurio=".$codigo."";
+      $query="SELECT u.* FROM contacto u WHERE id=".$codigo."";
       $selectall=$this->db->query($query);
       $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
       return $Listuser;
