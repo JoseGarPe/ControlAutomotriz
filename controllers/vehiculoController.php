@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once "../class/clienteModel.php";
+require_once "../class/vehiculoModel.php";
 $accion=$_GET['accion'];
  // id	name	user	pass	active	id_tipo_user
 if ($accion=='guardar') {
@@ -118,59 +118,15 @@ if ($accion=='guardar') {
            }
                          echo json_encode($informacion);
        }
-   }
-elseif($accion=='login') {
-	if (isset($_POST['usuario'])) {
-		$usuario=$_POST['usuario'];
-		if (isset($_POST['pass'])) {
-			$pass=$_POST['pass'];
-			$usua = new Usuario();
-			$usua->setCorreo($usuario);
-			$usua->setPass($pass);
-			$login=$usua->login();
-			if ($login==true) {
-				if ($usuario=='administrador@gmail.com') {
-					$informacion = [
-						"tittle" => "Correcto",
-						"text" => "Bienvenido",
-						"type" => "success",
-						"url" => "administracion.php"
-					];
-					
-				} else {
-					$informacion = [
-						"tittle" => "Correcto",
-						"text" => "Bienvenido",
-						"type" => "success",
-						"url" => "index.php"
-					];
-				}
-				
-				echo json_encode($informacion);
-			}else{
-							$informacion = [
-								"tittle" => "Error",
-								"text" => "Usuario $usuario no registrado, por favor registrate o intenta de nuevo.",
-								"type" => "error",
-							];
-				echo json_encode($informacion);  
-			}
-		}else{
-			$informacion = [
-				"tittle" => "Error",
-				"text" => "Contraseña invalida",
-				"type" => "error",
-			  ];
-			  echo json_encode($informacion);  
-		}	
-	}else{
-		$informacion = [
-			"tittle" => "Error",
-			"text" => "Es necesario un correo electronico para poder ingresar",
-			"type" => "error",
-		  ];
-		  echo json_encode($informacion);  
-	}	
+   }else if($accion=='modelos'){
+    $id_marca=$_POST['id_marca'];
+    $sucursales='';
+    $sucursal = new Vehiculo();
+    $listSucursales = $sucursal->selectALLOneCliente($id_marca);
+    foreach ($listSucursales as $dataCliente) {
+        $sucursales.='<option data-tokens="'.$dataCliente['modelo'].'" value="'.$dataCliente['id_modelo'].'">'.$dataCliente['modelo'].'</option>';
+    }
+    echo $sucursales;
 }
 elseif ($accion=='logout') {
 //	session_start();

@@ -4,7 +4,9 @@
 //--------------------------------------------//
 
 require_once "../../class/clienteModel.php";
+require_once "../../class/vehiculoModel.php";
 $usuario = new Cliente();
+$vehiculo = new Vehiculo();
 ?>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -183,13 +185,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="col">
                             <div class="form-group">
                               <label for="email">Marca:</label>
-                                <input type="text" id="marca" class="form-control" required> 
+                              <select class="optica form-control" id="marca" data-live-search="true" onchange="modelos_vehiculos(this.value)">
+                                    <option value="0">Selecciona una marca</option>
+                                    <?php 
+                                        $listUsua = $vehiculo->selectALLV();
+                                        foreach($listUsua['listUser'] as $dataCliente){
+                                            echo '<option data-tokens="'.$dataCliente['marca'].'" value="'.$dataCliente['id_marca'].'">'.$dataCliente['marca'].'</option>';
+                                            }
+                                    ?>
+                                </select>
                               </div>
                           </div>       
                           <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="pwd">Modelo:</label>
-                                    <input type="text" id="modelo" class="form-control" required> 
+                                <select class="sucursal form-control" id="modelo" data-live-search="true"> 
+                                </select>
                             </div>
                           </div>                       
                         </div> 
@@ -335,7 +346,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                      }
                 }); 
       });
-    });  
+    }); 
+    //-------------------------------------- LLENANDO EL SELECT DE MODELOS DE CARROS ----------------------------------
+    function modelos_vehiculos(id_marca){
+        $.ajax({  
+                      url:"../../controllers/vehiculoController.php?accion=modelos",  
+                      method:"POST",  
+                      data:{id_marca:id_marca},  
+                      success:function(data){  
+                       $('#modelo').html(data);
+                     //$('.sucursal').selectpicker();
+                      }  
+                  });  
+      } 
 </script>
 </body>
 </html>

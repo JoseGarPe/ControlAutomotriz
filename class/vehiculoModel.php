@@ -154,6 +154,14 @@ public function update()
   }
   //-------------------------------------------------------------------------------------//
 
+  public function selectALLOneCliente($id_marca)
+        {
+            $query="SELECT s.* FROM modelo_vehiculo s WHERE s.id_marca = $id_marca";
+            $selectall=$this->db->query($query);
+            $ListTipoUsuario=$selectall->fetch_all(MYSQLI_ASSOC);
+            return $ListTipoUsuario;
+        }
+
   
   public function delete()
   {
@@ -170,6 +178,16 @@ public function update()
   public function selectALL()
   {
       $query="SELECT v.*, c.name FROM vehiculo v LEFT JOIN contacto c ON v.id_contacto = c.id ORDER BY name ASC";
+      $selectall=$this->db->query($query);
+      $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
+      $informacion=array();
+      $informacion['cantidadInscritos']=$selectall->num_rows;
+      $informacion['listUser']=$Listuser;
+      return $informacion;
+  }
+  public function selectALLV()
+  {
+      $query="SELECT v.* FROM marcas_vehiculos v ORDER BY marca ASC";
       $selectall=$this->db->query($query);
       $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
       $informacion=array();
