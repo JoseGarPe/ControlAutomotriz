@@ -19,6 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
    <!-- Custom styles for this page -->
    <link href="../../src/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <link href="../../src/css/sweetalert2.css" rel="stylesheet" />
   <script src="../../src/jquery/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
@@ -334,8 +335,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../src/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../src/dist/js/adminlte.min.js"></script>
-   <script src="../../src/plugins/sweetalert2/sweetalert2.min.js"></script>
-   <script src="../../src/plugins/sweetalert2/sweetAlert2.js"></script>
+<script src="../../src/dist/js/sweetalert2.min.js"></script>
+   <script src="../../src/dist/js/sweetAlert2.js"></script>
 
 <script>
  $(document).ready(function(){  
