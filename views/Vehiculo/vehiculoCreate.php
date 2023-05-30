@@ -180,7 +180,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="col">
                             <div class="form-group">
                                 <label for="email">Placa:</label>
-                                <input type="text" class="form-control" id="placa" required>
+                                <input type="text" class="form-control" id="placa" required oninput="this.value = this.value.toUpperCase()">
                             </div>
                           </div>
                           <div class="col">
@@ -209,7 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Color:</label>
-                                    <input type="text" id="color"  class="form-control" required>
+                                    <input type="text" id="color"  class="form-control" required oninput="this.value = this.value.toUpperCase()">
                               </div>
                             </div>
                             <div class="col">
@@ -221,13 +221,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <div class="col">
                                 <div class="form-group">
                                   <label for="pwd">Tipo:</label>
-                                    <input type="text" id="tipo" required class="form-control">
+                                    <input type="text" id="tipo" required class="form-control" oninput="this.value = this.value.toUpperCase()">
                                 </div>
                               </div>
                               <div class="col" >
                                 <div class="form-group">
                                   <label for="email">Aseguradora:</label>
-                                    <input type="text" class="form-control" id="aseguradora" required> 
+                                    <input type="text" class="form-control" id="aseguradora" required oninput="this.value = this.value.toUpperCase()"> 
                                   </div>
                               </div>
                             </div>
@@ -235,13 +235,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="col">
                             <div class="form-group">
                               <label for="pwd">N° de Chasis:</label>
-                              <input type="text" class="form-control" id="chasis_n" required>
+                              <input type="text" class="form-control" id="chasis_n" required oninput="this.value = this.value.toUpperCase()">
                             </div>
                           </div> 
                           <div class="col">
                             <div class="form-group">
                               <label for="pwd">N° de Motor:</label>
-                              <input type="text" class="form-control" id="motor_n">
+                              <input type="text" class="form-control" id="motor_n" oninput="this.value = this.value.toUpperCase()">
                             </div>
                           </div>
                         </div>

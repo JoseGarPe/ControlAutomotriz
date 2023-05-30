@@ -186,7 +186,7 @@ public function update()
   //-----------------------------------------------------------------------------------------//
   public function selectALL()
   {
-      $query="SELECT v.*, c.name FROM vehiculo v LEFT JOIN contacto c ON v.id_contacto = c.id ORDER BY name ASC";
+      $query="SELECT v.*, c.name, m.marca as id_marca, n.modelo as id_modelo FROM vehiculo v LEFT JOIN contacto c ON v.id_contacto = c.id LEFT JOIN marcas_vehiculos m ON v.marca = m.id_marca LEFT JOIN modelo_vehiculo n ON v.modelo = n.id_modelo ORDER BY name ASC";
       $selectall=$this->db->query($query);
       $Listuser=$selectall->fetch_all(MYSQLI_ASSOC);
       $informacion=array();

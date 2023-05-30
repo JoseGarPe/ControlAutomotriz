@@ -179,8 +179,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                       echo "<tr>";
                                       echo "<td>".$dataCliente['name']."</td>";
                                       echo "<td>".$dataCliente['placa']."</td>";
-                                      echo "<td>".$dataCliente['marca']."</td>";
-                                      echo "<td>".$dataCliente['modelo']."</td>";
+                                      echo "<td>".$dataCliente['id_marca']."</td>";
+                                      echo "<td>".$dataCliente['id_modelo']."</td>";
                                       echo "<td>".$dataCliente['color']."</td>";
                                       echo "<td>".$dataCliente['año']."</td>";
                                       echo "<td><a href='https://localhost/ControlAutomotriz/views/Vehiculo/updateContact.php?id=".$dataCliente['id']."' class='btn btn-warning'>Editar</a></td>";

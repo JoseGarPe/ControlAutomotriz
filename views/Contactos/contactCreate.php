@@ -158,13 +158,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="email">Nombre Completo:</label>
-                                    <input type="text" class="form-control" required id="nombre">
+                                    <input type="text" class="form-control" required id="nombre" oninput="this.value = this.value.toUpperCase()">
                               </div>
                             </div>
                           <div class="col">
                             <div class="form-group">
                                 <label for="email">Fecha Nacimiento:</label>
-                                <input type="date" class="form-control" id="cumpleaños">
+                                <input type="date" class="form-control" id="cumpleaños" >
                             </div>
                           </div>
                           <div class="col">
@@ -208,7 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Direcciòn:</label>
-                                    <input type="email" id="direccion" required class="form-control">
+                                    <input type="email" id="direccion" required class="form-control" oninput="this.value = this.value.toUpperCase()">
                               </div>
                             </div>
                         </div>
@@ -243,7 +243,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Giro Fiscal:</label>
-                                    <input type="text" id="giro"  class="form-control">
+                                    <input type="text" id="giro"  class="form-control" oninput="this.value = this.value.toUpperCase()">
                               </div>
                             </div> 
                           <!-- <div class="col">

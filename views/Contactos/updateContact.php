@@ -8,6 +8,7 @@ if (isset($_GET['id'])) {
 require_once "../../class/clienteModel.php";
 $contacto = new Cliente;
 $listCon = $contacto->selectOne($id);
+/* $name = ""; */
 foreach ($listCon as $key) {
     $name = $key['name'];
     $cumpleaños = $key['cumpleaños'];
@@ -182,19 +183,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="email">Nombre Completo:</label>
-                                    <input type="text" class="form-control" required id="nombre">
+                                    <input type="text" class="form-control" required id="nombre" value="<?php echo $name?>">
                               </div>
                             </div>
                           <div class="col">
                             <div class="form-group">
                                 <label for="email">Fecha Nacimiento:</label>
-                                <input type="date" class="form-control" id="cumpleaños">
+                                <input type="date" class="form-control" id="cumpleaños" value="<?php echo $cumpleaños?>">
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label for="email">Edad:</label>
-                                <input type="text" id="edad" class="form-control" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required> 
+                                <input type="text" id="edad" class="form-control" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required value="<?php echo $edad?>"> 
                               </div>
                           </div>       
                         </div> 
@@ -202,29 +203,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <div class="col-sm-2">
                                 <div class="form-group">
                                     <label for="pwd">Genero:</label>
-                                      <select class="optica form-control" id="sexo" data-live-search="true" style="width:100px;">
+                                      <select class="optica form-control" id="sexo" data-live-search="true" style="width:100px;" >
                                         <option value="0">Seleccione Genero</option>                                        
-                                        <option value="M">Masculino</option>                                        
-                                        <option value="F">Femenino</option>                                        
+                                        <option value="M" <?php echo ($sexo =='M')? 'selected' : ''; ?>>Masculino</option>                                        
+                                        <option value="F" <?php echo ($sexo =='F')? 'selected' : ''; ?>>Femenino</option>                                        
                                     </select>
                                 </div>
                               </div>                       
                             <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Correo:</label>
-                                    <input type="email" id="email"  class="form-control">
+                                    <input type="email" id="email"  class="form-control" value="<?php echo $email?>">
                               </div>
                             </div>
                               <div class="col" >
                                 <div class="form-group">
                                   <label for="email">Celular:</label>
-                                    <input type="tel" class="form-control" id="telefono" maxlength="15" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
+                                    <input type="tel" class="form-control" id="telefono" maxlength="15" value="<?php echo $telefono?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
                                   </div>
                               </div>
                               <div class="col">
                                 <div class="form-group">
                                   <label for="email">Telefono Fijo:</label>
-                                      <input type="tel" class="form-control" id="tel_fijo" maxlength="15" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
+                                      <input type="tel" class="form-control" id="tel_fijo" maxlength="15" value="<?php echo $tel_fijo?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
                                   </div>
                               </div>
                             </div>              
@@ -232,7 +233,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Direcciòn:</label>
-                                    <input type="email" id="direccion" required class="form-control">
+                                    <input type="email" id="direccion" required class="form-control" value="<?php echo $direccion?>">
                               </div>
                             </div>
                         </div>
@@ -240,19 +241,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="col">
                             <div class="form-group">
                               <label for="pwd">DUI:</label>
-                              <input type="text" class="form-control" id="dui" maxlength="9" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                              <input type="text" class="form-control" id="dui" maxlength="9" value="<?php echo $dui?>" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                           </div> 
                           <div class="col">
                             <div class="form-group">
                               <label for="pwd">NIT:</label>
-                              <input type="text" class="form-control" id="nit" maxlength="15" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                              <input type="text" class="form-control" id="nit" maxlength="15" value="<?php echo $nit?>" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                             <label for="email">Nº Licencia:</label>
-                                  <input type="tel" class="form-control" id="n_licencia" maxlength="15" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}" required> 
+                                  <input type="tel" class="form-control" id="n_licencia" maxlength="15" value="<?php echo $n_licencia?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}" required> 
                               </div>
                           </div> 
                           
@@ -261,7 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="row"><div class="col">
                             <div class="form-group">
                               <label for="pwd">Registro IVA:</label>
-                              <input type="text" class="form-control" id="reg_iva" maxlength="15" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                              <input type="text" class="form-control" id="reg_iva" maxlength="15" value="<?php echo $giro?>" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                           </div>
                           <div class="col">
