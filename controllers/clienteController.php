@@ -111,7 +111,7 @@ if ($accion=='guardar') {
            }else{
                $informacion = [
                "tittle" => "Error",
-               "text" => "No fue posible registrar el contacto, por favor verifique los datos y vuelva a intentarlo",
+               "text" => "No fue posible registrar el contacto, por favor verifique los datos y vuelva a intentarlo ".$_SESSION['mensaje'],
                "type" => "error",
              ];
                

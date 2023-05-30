@@ -316,25 +316,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
  $(document).ready(function(){  
   $(document).on('click', '.save_data', function(){  
-         // var sticker = document.getElementById('sticker').value;  
-          var name = document.getElementById('nombre').value;
-          var cumpleaños = document.getElementById('cumpleaños').value;
-          var edad = document.getElementById('edad').value;
-          var sexo = document.getElementById('sexo').value;
-          var email = document.getElementById('email').value;
-          var telefono = document.getElementById('telefono').value;
-          var tel_fijo = document.getElementById('tel_fijo').value;
-          var direccion = document.getElementById('direccion').value;
-          var dui = document.getElementById('dui').value;
-          var nit = document.getElementById('nit').value;
-          var n_licencia = document.getElementById('n_licencia').value;
-          var reg_iva = document.getElementById('reg_iva').value;
-          var giro = document.getElementById('giro').value;
+          var nombre = document.getElementById('cliente').text;  
+          var cliente = document.getElementById('cliente').value;
+          var placa = document.getElementById('placa').value;
+          var marca = document.getElementById('marca').value;
+          var modelo = document.getElementById('modelo').value;
+          var color = document.getElementById('color').value;
+          var año = document.getElementById('año').value;
+          var tipo = document.getElementById('tipo').value;
+          var aseguradora = document.getElementById('aseguradora').value;
+          var chasis_n = document.getElementById('chasis_n').value;
+          var motor_n = document.getElementById('motor_n').value;
 
                 $.ajax({  
-                     url:"../../controllers/clienteController.php?accion=guardar",  
+                     url:"../../controllers/vehiculoController.php?accion=guardar",  
                      method:"POST",  
-                     data:{name:name,cumpleaños:cumpleaños,edad:edad,sexo:sexo,email:email,telefono:telefono,tel_fijo:tel_fijo,direccion:direccion,dui:dui,nit:nit,n_licencia:n_licencia,reg_iva:reg_iva,giro:giro},  
+                     data:{nombre:nombre,cliente:cliente,placa:placa,marca:marca,modelo:modelo,color:color,año:año,tipo:tipo,aseguradora:aseguradora,chasis_n:chasis_n,motor_n:motor_n},  
                      success:function(data){ 
                       var array = JSON.parse(data);
                         if (array.type == "success") {

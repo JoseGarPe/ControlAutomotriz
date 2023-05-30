@@ -352,8 +352,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
           var dui = document.getElementById('dui').value;
           var nit = document.getElementById('nit').value;
           var n_licencia = document.getElementById('n_licencia').value;
-          var reg_iva = document.getElementById('reg_iva').value;
-          var giro = document.getElementById('giro').value;
+          var preg_iva = document.getElementById('reg_iva').value;
+          var pgiro = document.getElementById('giro').value;
+          if (preg_iva == 0) {
+            reg_iva = 0;
+            giro = "NULL";
+          }else{
+            reg_iva = preg_iva;
+            giro = pgiro;
+          }
 
                 $.ajax({  
                      url:"../../controllers/clienteController.php?accion=guardar",  

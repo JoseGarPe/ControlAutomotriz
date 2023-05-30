@@ -156,8 +156,8 @@ public function setGiro($giro) {
 
 public function save()
 {
-      $query="INSERT INTO contacto (id,name,direccion,telefono,dui,n_licencia,correo,nit,reg_iva,genero,tel_fijo,edad,giro_fiscal,cumpleaños)
-                  values(NULL,'".$this->name."','".$this->direccion."','".$this->telefono."','".$this->dui."','".$this->licencia."','".$this->correo."',".$this->nit.",".$this->reg_iva.",'".$this->genero."','".$this->tel_fijo."',".$this->edad.",'".$this->giro."','".$this->cumpleaños."');";
+      $query="INSERT INTO contacto (id,name,direccion,telefono,dui,n_licencia,correo,nit,cumpleaños,genero,tel_fijo,edad,giro_fiscal,reg_iva)
+                  values(NULL,'".$this->name."','".$this->direccion."','".$this->telefono."','".$this->dui."','".$this->licencia."','".$this->correo."',".$this->nit.",'".$this->cumpleaños."','".$this->genero."','".$this->tel_fijo."',".$this->edad.",'".$this->giro."',".$this->reg_iva.");";
           $save=$this->db->query($query);
           if ($save==true) {
               return true;

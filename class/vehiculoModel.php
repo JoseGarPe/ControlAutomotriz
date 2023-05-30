@@ -2,7 +2,8 @@
 require_once "config/conexion.php";
 class Vehiculo extends Conexion{
     // id	name	user	pass	active	id_tipo_user
-   private $id;
+   private $cliente;
+   private $estado;
    private $marca;
    private $modelo;
    private $color;
@@ -19,7 +20,8 @@ class Vehiculo extends Conexion{
    {
          parent::__construct(); //Llamada al constructor de la clase padre
 
-         $this->id;
+         $this->cliente;
+         $this->estado;
          $this->marca;
          $this->modelo;
          $this->color;
@@ -34,12 +36,19 @@ class Vehiculo extends Conexion{
              
        
    }
- public function getId() {
-    return $this->id;
+ public function getEstado() {
+    return $this->estado;
 }
 
-public function setId($id) {
-    $this->id = $id;
+public function setEstado($estado) {
+    $this->estado = $estado;
+}
+ public function getCliente() {
+    return $this->cliente;
+}
+
+public function setCliente($cliente) {
+    $this->cliente = $cliente;
 }
 
 public function getMarca() {
@@ -127,8 +136,8 @@ public function setMotor_n($motor_n) {
 
 public function save()
 {
-      $query="INSERT INTO contacto (id,name,direccion,telefono,dui,n_licencia,correo,nit,reg_iva,genero,tel_fijo,edad,giro_fiscal,cumpleaños)
-                  values(NULL,'".$this->name."','".$this->direccion."','".$this->telefono."','".$this->dui."','".$this->licencia."','".$this->correo."',".$this->nit.",".$this->reg_iva.",'".$this->genero."','".$this->tel_fijo."',".$this->edad.",'".$this->giro."','".$this->cumpleaños."');";
+      $query="INSERT INTO vehiculo (id,marca,modelo,color,aseguradora,active,id_contacto,placa,año,tipo,chasis_n,motor_n)
+                  values(NULL,'".$this->marca."','".$this->modelo."','".$this->color."','".$this->aseguradora."','".$this->estado."','".$this->cliente."','".$this->placa."',".$this->año.",'".$this->tipo."','".$this->chasis_n."','".$this->motor_n."');";
           $save=$this->db->query($query);
           if ($save==true) {
               return true;

@@ -8,96 +8,84 @@ require_once "../class/vehiculoModel.php";
 $accion=$_GET['accion'];
  // id	name	user	pass	active	id_tipo_user
 if ($accion=='guardar') {
-    if (isset($_POST['name'])) {
-        $name=$_POST['name'];
+    if (isset($_POST['cliente'])) {
+        $cliente=$_POST['cliente'];
     }else{
-        $name=NULL;
+        $cliente=NULL;
     }
-    if (isset($_POST['cumpleaños'])) {
-        $cumpleaños=$_POST['cumpleaños'];
+    if (isset($_POST['nombre'])) {
+        $nombre=$_POST['nombre'];
     }else{
-        $cumpleaños=NULL;
+        $nombre=NULL;
     }
-    if (isset($_POST['edad'])) {
-        $edad=$_POST['edad'];
+    if (isset($_POST['placa'])) {
+        $placa=$_POST['placa'];
     }else{
-        $edad=NULL;
+        $placa=NULL;
     }
-    if (isset($_POST['sexo'])) {
-        $sexo=$_POST['sexo'];
+    if (isset($_POST['marca'])) {
+        $marca=$_POST['marca'];
     }else{
-        $sexo=NULL;
+        $marca=NULL;
     }
-    if (isset($_POST['email'])) {
-        $email=$_POST['email'];
+    if (isset($_POST['modelo'])) {
+        $modelo=$_POST['modelo'];
     }else{
-        $email=NULL;
+        $modelo=NULL;
     }
-    if (isset($_POST['telefono'])) {
-        $telefono=$_POST['telefono'];
+    if (isset($_POST['color'])) {
+        $color=$_POST['color'];
     }else{
-        $telefono=NULL;
+        $color=NULL;
     }
-    if (isset($_POST['tel_fijo'])) {
-        $tel_fijo=$_POST['tel_fijo'];
+    if (isset($_POST['año'])) {
+        $año=$_POST['año'];
     }else{
-        $tel_fijo=NULL;
+        $año=NULL;
     }
-    if (isset($_POST['direccion'])) {
-        $direccion=$_POST['direccion'];
+    if (isset($_POST['tipo'])) {
+        $tipo=$_POST['tipo'];
     }else{
-        $direccion=NULL;
+        $tipo=NULL;
     }
-    if (isset($_POST['dui'])) {
-        $dui=$_POST['dui'];
+    if (isset($_POST['aseguradora'])) {
+        $aseguradora=$_POST['aseguradora'];
+    }else{
+        $aseguradora=NULL;
+    }
+    if (isset($_POST['chasis_n'])) {
+        $chasis_n=$_POST['chasis_n'];
     }else{
         $dui=NULL;
     }
-    if (isset($_POST['nit'])) {
-        $nit=$_POST['nit'];
+    if (isset($_POST['motor_n'])) {
+        $motor_n=$_POST['motor_n'];
     }else{
-        $nit=NULL;
-    }
-    if (isset($_POST['n_licencia'])) {
-        $n_licencia=$_POST['n_licencia'];
-    }else{
-        $n_licencia=NULL;
-    }
-    if (isset($_POST['reg_iva'])) {
-        $reg_iva=$_POST['reg_iva'];
-    }else{
-        $reg_iva=NULL;
-    }
-    if (isset($_POST['giro'])) {
-        $giro=$_POST['giro'];
-    }else{
-        $giro=NULL;
+        $motor_n=NULL;
     }
     $estado=1;
     
-    $usua = new Cliente();
-    $usua->setName($name);
-    $usua->setDireccion($direccion);
-    $usua->setTelefono($telefono);
-    $usua->setDui($dui);
-    $usua->setNit($nit);
-    $usua->setLicencia($n_licencia);
-    $usua->setCorreo($email);
-    $usua->setGenero($sexo);
-    $usua->setEdad($edad);
-    $usua->setReg_iva($reg_iva);
-    $usua->setTel_fijo($tel_fijo);
-    $usua->setCumpleaños($cumpleaños);
-    $usua->setGiro($giro);
+    $usua = new Vehiculo();
+    $usua->setCliente($cliente);
+    $usua->setEstado($estado);
+    $usua->setMarca($marca);
+    $usua->setModelo($modelo);
+    $usua->setColor($color);
+    $usua->setAseguradora($aseguradora);
+    $usua->setPlaca($placa);
+    $usua->setAño($año);
+    $usua->setTipo($tipo);
+    $usua->setChasis_n($chasis_n);
+    $usua->setMotor_n($motor_n);
     $save =$usua->save();
    
        if ($save==TRUE) {
            
         $informacion = [
             "tittle" => "Correcto",
-            "text" => "Cliente registrado con exito ",
+            "text" => "Automovil registrado con exito, a nombre de: ".$nombre,
             "type" => "success",
-            "url" => "cliente.php"
+            "url" => "vehiculoCreate.php"
             ];
             echo json_encode($informacion);
        }else{
@@ -111,7 +99,7 @@ if ($accion=='guardar') {
            }else{
                $informacion = [
                "tittle" => "Error",
-               "text" => "No fue posible registrar el contacto, por favor verifique los datos y vuelva a intentarlo",
+               "text" => "No fue posible registrar el contacto, por favor verifique los datos y vuelva a intentarlo".$_SESSION['mensaje'],
                "type" => "error",
              ];
                
