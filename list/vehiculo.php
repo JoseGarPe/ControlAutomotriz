@@ -247,6 +247,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../src/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../src/dist/js/adminlte.min.js"></script>
+   <script src="../src/dist/js/sweetalert2.min.js"></script>
+   <script src="../src/dist/js/sweetAlert2.js"></script>
 
 <script>
  $(document).ready(function(){  
