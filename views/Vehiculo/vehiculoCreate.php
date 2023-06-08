@@ -31,6 +31,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../../src/jquery/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -245,11 +250,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                           </div>
                         </div>
+                        <div class="col">
+                    <div class="dropzone" id="Drop"></div>
+                    </div>
+                    <br>
                         <div class="row">
                         <input type="button" class="btn btn-success save_data" value="Guardar">
                     </div>
+                    
                  </form>
                   </div>
+                 
                 </div>
                 <div class="row">
                   <div class="col-lg">
@@ -315,6 +326,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
    <script src="../../src/dist/js/sweetAlert2.js"></script>
 
 <script>
+   Dropzone.options.Drop = { // camelized version of the `id`
+    
+    paramName: "up_img", // The name that will be used to transfer the file
+    autoProcessQueue: false,
+    maxFiles: 5,
+    parallelUploads: 5,
+    addRemoveLinks: true,
+    url: '../../controllers/vehiculoController.php?accion=uploadimg',
+
+    init: function() {
+      $('.save_data').click(function() { 
+          var myDropzone = Dropzone.forElement(".dropzone");
+          myDropzone.processQueue();  
+        
+       
+      });
+      this.on('queuecomplete', function(){
+          var cliente = document.getElementById('cliente').value;
+          var placa = document.getElementById('placa').value;
+        this.removeAllFiles();
+            alertaLogin("Correcto");
+      });
+      }
+    
+  };
+
  $(document).ready(function(){  
   $(document).on('click', '.save_data', function(){  
           var nombre = document.getElementById('cliente').text;  

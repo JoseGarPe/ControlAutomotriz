@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 session_start();
 require_once "../class/vehiculoModel.php";
+require_once "../class/imgModel.php";
 $accion=$_GET['accion'];
  // id	name	user	pass	active	id_tipo_user
 if ($accion=='guardar') {
@@ -131,5 +132,45 @@ elseif ($accion=='logout') {
 		"url" => "index.php"
 	];
 	echo json_encode($informacion);
+}elseif ($accion=='uploadimg') {
+	if (isset($_FILES['up_img'])) {
+		$cliente=$_POST['cliente'];	
+		$placa=$_POST['placa'];	
+		
+        
+		if($_FILES['up_img']['type']=='image/png' || $_FILES['up_img']['type']=='image/jpeg' || $_FILES['up_img']['type']=='image/jpg'){
+			
+			 $carpeta = $_SERVER['DOCUMENT_ROOT'].'/src/assets/img/upload/'.$cliente.'_'.$placa;
+			$directorio = $carpeta.'/archivo_usr_'.$placa.'_';
+	
+				if (!file_exists($carpeta)) {
+					
+					mkdir($carpeta, 0777, true);
+					$fichero=$directorio.basename($_FILES['up_img']['name']);
+					if (move_uploaded_file($_FILES['up_img']['tmp_name'], $fichero)) {
+						$nombre=$_FILES['up_img']['name'];
+						$foto_uno='archivo_usr_'.$placa.'_';
+						$imagen= new Imagenes();
+						$imagen->setId_usuario($cliente);
+						$imagen->setName_temp($nombre);
+						$save = $imagen->uploadimg($placa);
+						} 
+				}else{
+					
+					$fichero=$directorio.basename($_FILES['up_img']['name']);
+					if (move_uploaded_file($_FILES['up_img']['tmp_name'], $fichero)) {
+						$nombre=$_FILES['up_img']['name'];
+						$foto_uno='archivo_usr_'.$cliente.'_'.$nombre;
+						$imagen= new Imagenes();
+						$imagen->setId_usuario($cliente);
+						$imagen->setName_temp($nombre);
+						$save = $imagen->uploadimg($placa);
+						} 
+				}	
+
+		}
+	}
+
+
 }
 ?>

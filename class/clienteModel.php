@@ -169,9 +169,10 @@ public function save()
   
 }
 ///----------------------------------------------------------------------------------------//
-public function update()
+public function update($id)
   {
-      $query="UPDATE contacto SET user='".$this->user."',pass='".$this->pass."' WHERE id=".$this->id."";
+      $query="UPDATE contacto SET name='".$this->name."',direccion='".$this->direccion."',telefono='".$this->telefono."',dui='".$this->dui."',n_licencia='".$this->licencia."',correo='".$this->correo."',nit='".$this->nit."',cumpleaños='".$this->cumpleaños."',genero='".$this->genero."',tel_fijo='".$this->tel_fijo."',edad='".$this->edad."',giro_fiscal='".$this->giro."',reg_iva='".$this->reg_iva."'
+      WHERE id=".$id."";
       $update=$this->db->query($query);
       if ($update==true) {
           return true;

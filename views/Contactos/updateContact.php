@@ -44,6 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
    <!-- Custom styles for this page -->
    <link href="../../src/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <link href="../../src/css/sweetalert2.css" rel="stylesheet" />
   <script src="../../src/jquery/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
@@ -183,7 +184,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="email">Nombre Completo:</label>
-                                    <input type="text" class="form-control" required id="nombre" value="<?php echo $name?>">
+                                    <input type="text" class="form-control" required id="nombre" value="<?php echo $name?>" oninput="this.value = this.value.toUpperCase()">
+                                    <input type="hidden" class="form-control" id="id_cli" value="<?php echo $id?>" >
                               </div>
                             </div>
                           <div class="col">
@@ -219,13 +221,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                               <div class="col" >
                                 <div class="form-group">
                                   <label for="email">Celular:</label>
-                                    <input type="tel" class="form-control" id="telefono" maxlength="15" value="<?php echo $telefono?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
+                                    <input type="tel" class="form-control" id="telefono" maxlength="8" value="<?php echo $telefono?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
                                   </div>
                               </div>
                               <div class="col">
                                 <div class="form-group">
                                   <label for="email">Telefono Fijo:</label>
-                                      <input type="tel" class="form-control" id="tel_fijo" maxlength="15" value="<?php echo $tel_fijo?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
+                                      <input type="tel" class="form-control" id="tel_fijo" maxlength="8" value="<?php echo $tel_fijo?>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' pattern="[0-9]{4}-[0-9]{4}" required> 
                                   </div>
                               </div>
                             </div>              
@@ -233,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Direcciòn:</label>
-                                    <input type="email" id="direccion" required class="form-control" value="<?php echo $direccion?>">
+                                    <input type="email" id="direccion" required class="form-control" value="<?php echo $direccion?>" oninput="this.value = this.value.toUpperCase()">
                               </div>
                             </div>
                         </div>
@@ -268,7 +270,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="col">
                               <div class="form-group">
                                   <label for="pwd">Giro Fiscal:</label>
-                                    <input type="text" id="giro"  class="form-control">
+                                    <input type="text" id="giro"  class="form-control" oninput="this.value = this.value.toUpperCase()">
                               </div>
                             </div> 
                           <!-- <div class="col">
@@ -360,13 +362,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../src/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../src/dist/js/adminlte.min.js"></script>
-   <script src="../../src/plugins/sweetalert2/sweetalert2.min.js"></script>
-   <script src="../../src/plugins/sweetalert2/sweetAlert2.js"></script>
+<script src="../../src/dist/js/sweetalert2.min.js"></script>
+<script src="../../src/dist/js/sweetAlert2.js"></script>
 
 <script>
  $(document).ready(function(){  
   $(document).on('click', '.save_data', function(){  
-         // var sticker = document.getElementById('sticker').value;  
+          var id = document.getElementById('id_cli').value;  
           var name = document.getElementById('nombre').value;
           var cumpleaños = document.getElementById('cumpleaños').value;
           var edad = document.getElementById('edad').value;
@@ -378,13 +380,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
           var dui = document.getElementById('dui').value;
           var nit = document.getElementById('nit').value;
           var n_licencia = document.getElementById('n_licencia').value;
-          var reg_iva = document.getElementById('reg_iva').value;
-          var giro = document.getElementById('giro').value;
+          var preg_iva = document.getElementById('reg_iva').value;
+          var pgiro = document.getElementById('giro').value;
+          if (preg_iva == 0) {
+            reg_iva = 0;
+            giro = "NULL";
+          }else{
+            reg_iva = preg_iva;
+            giro = pgiro;
+          }
 
                 $.ajax({  
-                     url:"../../controllers/clienteController.php?accion=guardar",  
+                     url:"../../controllers/clienteController.php?accion=update",  
                      method:"POST",  
-                     data:{name:name,cumpleaños:cumpleaños,edad:edad,sexo:sexo,email:email,telefono:telefono,tel_fijo:tel_fijo,direccion:direccion,dui:dui,nit:nit,n_licencia:n_licencia,reg_iva:reg_iva,giro:giro},  
+                     data:{id:id,name:name,cumpleaños:cumpleaños,edad:edad,sexo:sexo,email:email,telefono:telefono,tel_fijo:tel_fijo,direccion:direccion,dui:dui,nit:nit,n_licencia:n_licencia,reg_iva:reg_iva,giro:giro},  
                      success:function(data){ 
                       var array = JSON.parse(data);
                         if (array.type == "success") {
