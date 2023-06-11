@@ -47,27 +47,16 @@ class Imagenes extends Conexion
         $this->fecha_ing_img = $fecha_ing_img;
     }
 
-public function uploadimg($path)
+public function uploadimg($placa)
 {
-    $query1="INSERT INTO notificaciones (id_noti,id_usr,estado,fecha_noti)
-        VALUES (NULL,'".$this->id_usuario."','0',CURDATE())";
-    $noti=$this->db->query($query1);
     //--------------------------------------------------------------------------//
-    $query2="UPDATE usuarios SET path='".$path."' WHERE id_usuario='".$this->id_usuario."'";
-    $save=$this->db->query($query2);
-    if ($save==true) {
-        $query="INSERT INTO img_usr (id_img_us,user_id,fecha_ing_img,img_nombre) 
-        VALUES (NULL,'".$this->id_usuario."',CURDATE(),'".$this->name_temp."');";
+        $query="INSERT INTO img_car (id_img,id_cliente,placa,created_date,img_name) 
+         VALUES (NULL,'".$this->id_usuario."',".$placa.",CURDATE(),'".$this->name_temp."');";
             $save=$this->db->query($query);
-        if ($save==true) {
+       
             return true;
-        }else {
-            return false;
-        }
-    }else {
+       
 
-        return false;
-    }
    
     //--------------------------------------------------------------------------//
   

@@ -338,15 +338,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     init: function() {
       $('.save_data').click(function() { 
           var myDropzone = Dropzone.forElement(".dropzone");
-          myDropzone.processQueue();  
-        
-       
-      });
-      this.on('queuecomplete', function(){
           var cliente = document.getElementById('cliente').value;
           var placa = document.getElementById('placa').value;
+          myDropzone.processQueue(); 
+      });
+      this.on('sending', function (file, xhr, formData) {
+                    formData.append("cliente", $("#cliente").val());
+                    formData.append("placa", $("#placa").val());
+                });
+      this.on('queuecomplete', function(){
         this.removeAllFiles();
-            alertaLogin("Correcto");
       });
       }
     
@@ -354,7 +355,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
  $(document).ready(function(){  
   $(document).on('click', '.save_data', function(){  
-          var nombre = document.getElementById('cliente').text;  
+          var nombre = $("#cliente option:selected").text();  
           var cliente = document.getElementById('cliente').value;
           var placa = document.getElementById('placa').value;
           var marca = document.getElementById('marca').value;
@@ -369,7 +370,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $.ajax({  
                      url:"../../controllers/vehiculoController.php?accion=guardar",  
                      method:"POST",  
-                     data:{nombre:nombre,cliente:cliente,placa:placa,marca:marca,modelo:modelo,color:color,año:año,tipo:tipo,aseguradora:aseguradora,chasis_n:chasis_n,motor_n:motor_n},  
+                     data:{cliente:cliente,nombre:nombre,placa:placa,marca:marca,modelo:modelo,color:color,año:año,tipo:tipo,aseguradora:aseguradora,chasis_n:chasis_n,motor_n:motor_n},  
                      success:function(data){ 
                       var array = JSON.parse(data);
                         if (array.type == "success") {

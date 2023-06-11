@@ -140,16 +140,16 @@ elseif ($accion=='logout') {
         
 		if($_FILES['up_img']['type']=='image/png' || $_FILES['up_img']['type']=='image/jpeg' || $_FILES['up_img']['type']=='image/jpg'){
 			
-			 $carpeta = $_SERVER['DOCUMENT_ROOT'].'/src/assets/img/upload/'.$cliente.'_'.$placa;
+			 $carpeta = $_SERVER['DOCUMENT_ROOT'].'/ControlAutomotriz/assets/img/upload/'.$cliente.'_'.$placa;
 			$directorio = $carpeta.'/archivo_usr_'.$placa.'_';
-	
+	echo $carpeta;
 				if (!file_exists($carpeta)) {
 					
 					mkdir($carpeta, 0777, true);
 					$fichero=$directorio.basename($_FILES['up_img']['name']);
 					if (move_uploaded_file($_FILES['up_img']['tmp_name'], $fichero)) {
 						$nombre=$_FILES['up_img']['name'];
-						$foto_uno='archivo_usr_'.$placa.'_';
+						$foto_uno='archivo_usr_'.$cliente.'_';
 						$imagen= new Imagenes();
 						$imagen->setId_usuario($cliente);
 						$imagen->setName_temp($nombre);
